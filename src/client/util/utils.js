@@ -23,90 +23,105 @@ const findOpenIndex = (grid, index) => {
   return -1
 }
 
-const getMatricies = (gridBefore, index) => {
-  let matrix = []
+
+const rightDiagonal = (index) => {
   let m = []
   let i
   // DIAGONAL /
   // diagonal left down
   if (index % 7 !== 0){
-    i = index - 6
+    i = index - 6;
     do {
-      i += 6
+      i += 6;
       if (i !== index) {
-        m.push(i)
+        m.push(i);
       }
     } while (i < 35 && i % 7 !== 0)
-    m = m.sort((a,b) => b - a)
+    m = m.sort((a,b) => b - a);
   }
   // diagonal right up
-  i = index + 6
+  i = index + 6;
   do {
-    i-=6
-    m.push(i)
+    i-=6;
+    m.push(i);
   } while (i > 6 && (i + 1) % 7 !== 0)
-  matrix.push(m)
-  
+  return m;
+}
+
+const leftDiagonal = (index) => {
   // DIAGONAL \
-  m = []
+  let m = [];
+  let i;
   // diagonal right down
-    i = index - 8
+    i = index - 8;
     do {
       i += 8
       if (i !== index) {
-        m.push(i)
+        m.push(i);
       }
     } while (i < 35 && (i + 1) % 7 !== 0)
-    m = m.sort((a,b) => b - a)
+    m = m.sort((a,b) => b - a);
   // diagonal left up
-  i = index + 8
+  i = index + 8;
   do {
-    i-=8
-    m.push(i)
+    i-=8;
+    m.push(i);
   } while (i > 6 && i % 7 !== 0)
-  matrix.push(m.slice())
-  
+  return m;
+}
+
+const horizontal = (index) => {
+  let i;
+  let m = [];
   // HORIZONTAL
   // right
-  let k = findOpenIndex(gridBefore, index)
-  if (k > -1) {
-    m = []
-    i = k + 1
+  if (index > -1) {
+    m = [];
+    i = index + 1;
     do {
-      i--
-      if (i !== k) {
-        m.push(i)
+      i--;
+      if (i !== index) {
+        m.push(i);
       }
     } while (i % 7 !== 0)
-    m = m.sort((a,b) => a - b)
+    m = m.sort((a,b) => a - b);
     // left
-    i = k - 1
+    i = index - 1;
     do {
-      i++
-      m.push(i)
+      i++;
+      m.push(i);
     } while ((i + 1) % 7 !== 0)
     
-    matrix.push(m.slice())
+    return m;
   }
-  
+}
+
+const vertical = (index) => {
   // VERTICAL
-  m = []
+  let m = [];
   // down
-  i = index - 7
+  let i = index - 7;
   do {
-    i += 7
-    m.push(i)
+    i += 7;
+    m.push(i);
   } while (i < 35)
-  m = m.sort((a,b) => b - a)
+  m = m.sort((a,b) => b - a);
   // up
-  i = index
+  i = index;
   while (i > 6) {
     i -= 7
-    m.push(i)
+    m.push(i);
   }
-   
-  matrix.push(m)
-  // console.log(matrix)
+  return m;
+}
+
+const getMatricies = (gridBefore, index) => {
+  let matrix = []
+  let k = findOpenIndex(gridBefore, index)
+  matrix.push(rightDiagonal(k));
+  matrix.push(leftDiagonal(k));
+  matrix.push(horizontal(k));
+  matrix.push(vertical(k));
   return matrix
 }
 
