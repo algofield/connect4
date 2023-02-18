@@ -46,3 +46,52 @@ button {
   padding: 0.25rem 0.8rem;
   box-shadow: 0 0.125rem 0.125rem rgba(25, 25, 25, 0.7);
 }
+
+.board { 
+  width: 42rem;
+  height: 42rem;
+  background-color: yellow;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0.125rem 0.125rem rgba(25, 25, 25, 0.7);
+}
+
+.circle {
+  flex-basis: calc(1/7);
+  width: 4rem;
+  height: 4rem;
+  margin: 1rem;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: inset 0 0.125rem 0.125rem rgba(25, 25, 25, 0.7);
+}
+
+.circle.red,
+.circle.blue {
+  box-shadow: none;
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.modal {
+  z-index: 1;
+  background-color: white;
+  border-radius: 0.125rem;
+  width: 20rem;
+  height: 20rem;
+  position:fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0.125rem 0.125rem rgba(25, 25, 25, 0.7);
+}
