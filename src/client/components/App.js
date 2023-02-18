@@ -26,7 +26,6 @@ const App = (props) => {
         g[k].color = BLUE
       }
       const { won:isOver, winningColor } = calculateWins(g, gBefore, index)
-      // console.log(isOver, winningColor)
       if (isOver) {
         setIsGameOver(true)
         setWhoWon(winningColor)
