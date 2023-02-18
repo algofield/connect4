@@ -8,7 +8,7 @@ const Board = ({ grid, onClick }) => {
     <div className="board">
       {
         grid.map((elem, i) => (
-          <Circle key={i} elem={elem} onClick={() => onClick(i)}></Circle>
+          <Circle key={i} elem={elem} i={i} onClick={() => onClick(i)}></Circle>
         ))
       }
     </div>

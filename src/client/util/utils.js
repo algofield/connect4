@@ -45,7 +45,7 @@ const getMatricies = (gridBefore, index) => {
     i-=6
     m.push(i)
   } while (i > 6 && (i + 1) % 7 !== 0)
-  matrix.push(m.slice())
+  matrix.push(m)
   
   // DIAGONAL \
   m = []
@@ -106,6 +106,7 @@ const getMatricies = (gridBefore, index) => {
   }
    
   matrix.push(m)
+  // console.log(matrix)
   return matrix
 }
 

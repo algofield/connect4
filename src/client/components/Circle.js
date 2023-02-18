@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/index.css'
 
-const Circle = ({ elem, onClick }) => {
+const Circle = ({ elem, onClick, i}) => {
   const style = elem?.color ? `circle ${elem.color}`: `circle`
 
   return (
